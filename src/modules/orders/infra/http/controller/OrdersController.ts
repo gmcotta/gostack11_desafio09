@@ -11,6 +11,11 @@ export default class OrdersController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    // TODO
+    const createOrder = container.resolve(CreateOrderService);
+
+    const { customer_id, products } = request.body;
+    const order = await createOrder.execute({ customer_id, products });
+
+    return response.json(order);
   }
 }
