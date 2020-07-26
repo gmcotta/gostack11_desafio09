@@ -33,6 +33,7 @@ class CreateOrderService {
     if (!findCustomer) {
       throw new AppError('This customer does not exist.');
     }
+
     const orderedProducts: {
       product_id: string;
       price: number;
